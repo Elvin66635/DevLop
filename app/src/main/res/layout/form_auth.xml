@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="top"
+    android:id="@+id/auth_main_id"
+    >
+    <EditText
+        android:id="@+id/auth_login"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/auth_input_height"
+        android:ems="10"
+        android:hint="@string/auth_login"
+        android:inputType="textPersonName"
+        android:background="@drawable/shape_for_input_auth"
+        android:drawableLeft="@drawable/custom_auth_login_icon"
+        android:drawablePadding="20dp"
+        />
+
+    <EditText
+        android:layout_marginTop="@dimen/auth_our_margin_input"
+        android:id="@+id/auth_password"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/auth_input_height"
+        android:ems="10"
+        android:hint="@string/auth_password"
+        android:inputType="textPassword"
+        android:background="@drawable/shape_for_input_auth"
+        android:drawableLeft="@drawable/auth_user_password_icon"
+        android:drawablePadding="20dp"
+        />
+
+</LinearLayout>

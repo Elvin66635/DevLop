@@ -1,0 +1,34 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@drawable/bg_auth"
+    android:scaleType="centerCrop"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_auth_transparent"
+        android:scaleType="centerCrop"
+        android:orientation="vertical"
+        android:gravity="top"
+        >
+        <ImageView
+            android:layout_width="@dimen/logo_auth_width"
+            android:layout_height="@dimen/logo_auth_height"
+            android:layout_gravity="center"
+            android:layout_marginTop="200dp"
+            android:src="@drawable/auth_logo"/>
+        <include
+            layout="@layout/form_auth"
+            android:layout_width="320dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="100dp"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+
+</FrameLayout>

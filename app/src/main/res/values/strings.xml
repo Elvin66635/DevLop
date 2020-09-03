@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">DevLop</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">Назаркин Сергей</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Новости</string>
+    <string name="menu_tours">Экскурсии</string>
+    <string name="menu_walking_tours">Пешие экскурсии</string>
+    <string name="menu_tours_institutions">Экскурсии по заведениям</string>
+    <string name="menu_lectures">Лекции</string>
+    <string name="menu_vr">VR обучение</string>
+    <string name="menu_vr_lesson">VR уроки</string>
+    <string name="menu_vr_free_move">VR свободное перемещение</string>
+    <string name="menu_sittings">Настройки</string>
+    <string name="auth_login">Имя пользователя</string>
+    <string name="auth_password">Пароль</string>
+
+    <string name="home_second">Home Second</string>
+</resources>
