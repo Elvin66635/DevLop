@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_auth"
+    tools:context=".AuthorizationActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="230dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/auth_logo" />
+
+    <EditText
+        android:id="@+id/edLogin"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/logo"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/shape_for_input_auth"
+        android:drawableLeft="@drawable/ic_person"
+        android:drawablePadding="10dp"
+        android:hint="@string/auth_login"
+        android:paddingLeft="15dp"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/edPass"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/edLogin"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/shape_for_input_auth"
+        android:drawableLeft="@drawable/ic_lock"
+        android:drawablePadding="10dp"
+        android:hint="@string/auth_password"
+        android:paddingLeft="15dp"
+        android:singleLine="true" />
+
+
+    <TextView
+        android:id="@+id/forgotPasstxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edPass"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="65dp"
+        android:text="@string/forgot_pass"
+        android:textColor="#DDDDDD" />
+
+
+    <Button
+        android:id="@+id/logInBtn"
+        android:text="@string/log_in"
+        android:layout_marginTop="50dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/forgotPasstxt"
+        android:textColor="#D01111"
+        android:background="@drawable/login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:id="@+id/haveAcc"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logInBtn"
+        android:text="@string/have_account"
+        android:layout_marginStart="20dp"
+        android:textColor="#DDDDDD"
+        android:layout_marginLeft="40dp" />
+
+    <TextView
+        android:id="@+id/signUp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/haveAcc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logInBtn"
+        android:text="@string/sign_up"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp" />
+</RelativeLayout>

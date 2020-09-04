@@ -18,6 +18,11 @@
     <string name="menu_sittings">Настройки</string>
     <string name="auth_login">Имя пользователя</string>
     <string name="auth_password">Пароль</string>
-
+    <string name="email">Email</string>
+    <string name="forgot_pass">Забыли пароль? </string>
+    <string name="have_account">Еще не имеете аккаунта? </string>
+    <string name="sign_up">Зарегистрироваться </string>
+    <string name="log_in">Войти</string>
+    <string name="registration">Регистрация</string>
     <string name="home_second">Home Second</string>
 </resources>

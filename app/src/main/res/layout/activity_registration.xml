@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/reg_screen_bcgnd"
+    tools:context=".AuthorizationActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="230dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/auth_logo" />
+
+    <EditText
+        android:id="@+id/edLoginReg"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/logo"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/shape_for_input_auth"
+        android:drawableLeft="@drawable/ic_person"
+        android:drawablePadding="10dp"
+        android:hint="@string/auth_login"
+        android:paddingLeft="15dp"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/edPassReg"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/edLoginReg"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/shape_for_input_auth"
+        android:drawableLeft="@drawable/ic_lock"
+        android:drawablePadding="10dp"
+        android:hint="@string/auth_password"
+        android:paddingLeft="15dp"
+        android:singleLine="true" />
+
+
+    <EditText
+        android:id="@+id/edEmailReg"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/edPassReg"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/shape_for_input_auth"
+        android:drawableLeft="@drawable/ic_email_black_24dp"
+        android:drawablePadding="10dp"
+        android:hint="@string/email"
+        android:paddingLeft="15dp"
+        android:singleLine="true" />
+
+
+    <Button
+        android:id="@+id/signUpBtn"
+        android:text="@string/registration"
+        android:layout_marginTop="50dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/edEmailReg"
+        android:textColor="#D01111"
+        android:background="@drawable/login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+</RelativeLayout>
