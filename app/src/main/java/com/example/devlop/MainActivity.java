@@ -49,6 +49,46 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        return true;
+
+        int id = menuItem.getItemId();
+
+        switch (id){
+            case(R.id.nav_home):
+
+
+
+                return true;
+
+            case(R.id.nav_lectures):
+
+
+                return true;
+
+
+            case (R.id.nav_tours_sub1):
+
+                return true;
+
+            case(R.id.nav_tours_sub2):
+
+                return true;
+
+            case (R.id.nav_free_move):
+                return true;
+
+            case (R.id.nav_vr_lesson):
+                return true;
+
+            default:
+                return true;
+            }
+
+
+
+
+
+        }
+
+
     }
-}
+
