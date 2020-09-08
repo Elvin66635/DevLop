@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AuthorizationActivity">
+        <activity android:name=".AuthorizationActivity"
+            android:windowSoftInputMode="stateHidden"
+           >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,7 +20,8 @@
         </activity>
         <activity android:name=".MainActivity">
         </activity>
-        <activity android:name=".RegistrationActivity"/>
+        <activity android:name=".RegistrationActivity"
+            android:windowSoftInputMode="stateHidden"/>
     </application>
 
 </manifest>

@@ -7,12 +7,23 @@
     android:background="@drawable/reg_screen_bcgnd"
     tools:context=".AuthorizationActivity">
 
+
+    <ScrollView
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
     <ImageView
         android:id="@+id/logo"
         android:layout_width="230dp"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
         android:src="@drawable/auth_logo" />
 
     <EditText
@@ -21,7 +32,7 @@
         android:layout_height="45dp"
         android:layout_below="@+id/logo"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="40dp"
         android:layout_marginRight="50dp"
         android:background="@drawable/shape_for_input_auth"
         android:drawableLeft="@drawable/ic_person"
@@ -65,7 +76,7 @@
     <Button
         android:id="@+id/signUpBtn"
         android:text="@string/registration"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:textStyle="bold"
         android:layout_below="@+id/edEmailReg"
         android:textColor="#D01111"
@@ -73,5 +84,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
+
+    <ProgressBar
+        android:id="@+id/pbReg"
+        android:layout_below="@+id/edEmailReg"
+        android:visibility="visible"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_width="70dp"
+        android:layout_height="80dp"
+        />
+        </RelativeLayout>
+</ScrollView>
 
 </RelativeLayout>

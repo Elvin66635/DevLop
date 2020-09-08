@@ -43,8 +43,7 @@ public class AuthorizationActivity extends AppCompatActivity {
         signUpTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),RegistrationActivity.class);
-                startActivity(i);
+                startActivity(new Intent(getApplicationContext(),RegistrationActivity.class));
             }
         });
 
