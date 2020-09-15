@@ -47,6 +47,12 @@ public class AuthorizationActivity extends AppCompatActivity {
             }
         });
 
+        forgotPassTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),ResetPassActivity.class));
+            }
+        });
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -5,8 +5,9 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">#E06161</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:actionBarStyle">@style/TransparentActionBar</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -17,7 +18,9 @@
         <item name="android:textSize">16sp</item>
         <item name="android:layout_marginLeft">16dp</item>
     </style>
-
+    <style name="TransparentActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
 
 
 
