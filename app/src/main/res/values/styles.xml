@@ -3,11 +3,25 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@android:color/transparent</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">#E06161</item>
-        <item name="windowNoTitle">true</item>
+        <item name="android:textColorPrimary">@color/arrow</item>
+        <item name="windowActionBarOverlay">true</item>
         <item name="android:actionBarStyle">@style/TransparentActionBar</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="MainActivityTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">#E06161</item>
+        <item name="android:textColorPrimary">@color/arrow</item>
+
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -18,11 +32,11 @@
         <item name="android:textSize">16sp</item>
         <item name="android:layout_marginLeft">16dp</item>
     </style>
-    <style name="TransparentActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">@android:color/transparent</item>
+
+
+    <style name="TransparentActionBar" parent="Theme.MaterialComponents.NoActionBar">
+
     </style>
-
-
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 

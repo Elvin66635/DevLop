@@ -5,23 +5,18 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -35,7 +30,7 @@ public class RegistrationActivity extends AppCompatActivity {
     Button signUpBtn;
     ProgressBar progressBar;
     private FirebaseAuth mAuth;
-    boolean isOpened = false;
+    Toolbar toolbar;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -47,13 +42,17 @@ public class RegistrationActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         initView();
-    //    setListenerToRootView();
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void initView() {
 
-
+        toolbar = findViewById(R.id.toolBarReg);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         edLoginReg = findViewById(R.id.edLoginReg);
         edPassReg = findViewById(R.id.edPassReg);
         edEmailReg = findViewById(R.id.edEmailReg);
@@ -90,6 +89,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(RegistrationActivity.this, "Пользователь создан", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            finish();
                         } else {
                             Toast.makeText(RegistrationActivity.this, "Ошибка " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
@@ -116,27 +116,12 @@ public class RegistrationActivity extends AppCompatActivity {
                 INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         return true;
+
     }
 
-    public void setListenerToRootView() {
-        final View activityRootView = getWindow().getDecorView().findViewById(android.R.id.content);
-        activityRootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-
-                int heightDiff = activityRootView.getRootView().getHeight() - activityRootView.getHeight();
-                if (heightDiff > 100) { // 99% of the time the height diff will be due to a keyboard.
-                    Toast.makeText(getApplicationContext(), "Gotcha!!! softKeyboardup", Toast.LENGTH_LONG).show();
-
-                    if (isOpened == false) {
-                        //Do two things, make the view top visible and the editText smaller
-                    }
-                    isOpened = true;
-                } else if (isOpened == true) {
-                    Toast.makeText(getApplicationContext(), "softkeyborad Down!!!", Toast.LENGTH_LONG).show();
-                    isOpened = false;
-                }
-            }
-        });
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

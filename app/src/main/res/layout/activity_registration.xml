@@ -4,97 +4,102 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/reg_screen_bcgnd"
     tools:context=".AuthorizationActivity">
 
-
     <ScrollView
-        android:fillViewport="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/reg_screen_bcgnd">
 
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="230dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/auth_logo" />
 
-    <EditText
-        android:id="@+id/edLoginReg"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_below="@+id/logo"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="50dp"
-        android:background="@drawable/shape_for_input_auth"
-        android:drawableLeft="@drawable/ic_person"
-        android:drawablePadding="10dp"
-        android:hint="@string/auth_login"
-        android:paddingLeft="15dp"
-        android:singleLine="true" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolBarReg"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:theme="@style/TransparentActionBar" />
 
-    <EditText
-        android:id="@+id/edPassReg"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_below="@+id/edLoginReg"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="50dp"
-        android:background="@drawable/shape_for_input_auth"
-        android:drawableLeft="@drawable/ic_lock"
-        android:drawablePadding="10dp"
-        android:hint="@string/auth_password"
-        android:paddingLeft="15dp"
-        android:singleLine="true" />
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="190dp"
+                android:layout_height="90dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="80dp"
+                android:src="@drawable/auth_logo" />
 
+            <EditText
+                android:id="@+id/edLoginReg"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/logo"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/shape_for_input_auth"
+                android:drawableLeft="@drawable/ic_person"
+                android:drawablePadding="10dp"
+                android:hint="@string/auth_login"
+                android:paddingLeft="15dp"
+                android:singleLine="true" />
 
-    <EditText
-        android:id="@+id/edEmailReg"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_below="@+id/edPassReg"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="50dp"
-        android:background="@drawable/shape_for_input_auth"
-        android:drawableLeft="@drawable/ic_email_black_24dp"
-        android:drawablePadding="10dp"
-        android:hint="@string/email"
-        android:paddingLeft="15dp"
-        android:singleLine="true" />
+            <EditText
+                android:id="@+id/edPassReg"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/edLoginReg"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/shape_for_input_auth"
+                android:drawableLeft="@drawable/ic_lock"
+                android:drawablePadding="10dp"
+                android:hint="@string/auth_password"
+                android:paddingLeft="15dp"
+                android:singleLine="true" />
 
 
-    <Button
-        android:id="@+id/signUpBtn"
-        android:text="@string/registration"
-        android:layout_marginTop="100dp"
-        android:textStyle="bold"
-        android:layout_below="@+id/edEmailReg"
-        android:textColor="#D01111"
-        android:background="@drawable/login_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+            <EditText
+                android:id="@+id/edEmailReg"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/edPassReg"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/shape_for_input_auth"
+                android:drawableLeft="@drawable/ic_email_black_24dp"
+                android:drawablePadding="10dp"
+                android:hint="@string/email"
+                android:paddingLeft="15dp"
+                android:singleLine="true" />
 
-    <ProgressBar
-        android:id="@+id/pbReg"
-        android:layout_below="@+id/edEmailReg"
-        android:visibility="visible"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_width="70dp"
-        android:layout_height="80dp"
-        />
+
+            <Button
+                android:id="@+id/signUpBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edEmailReg"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/login_btn"
+                android:text="@string/registration"
+                android:textColor="#D01111"
+                android:textStyle="bold" />
+
+            <ProgressBar
+                android:id="@+id/pbReg"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                android:layout_below="@+id/edEmailReg"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:visibility="invisible" />
         </RelativeLayout>
-</ScrollView>
+    </ScrollView>
 
 </RelativeLayout>

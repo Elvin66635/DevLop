@@ -59,25 +59,27 @@ public class AuthorizationActivity extends AppCompatActivity {
                 String pass = edPass.getText().toString().trim();
                 String username = edLogin.getText().toString().trim();
 
+                if (TextUtils.isEmpty(username)) {
+                    edLogin.setError("email пустой");
+                    return;
+                }
                 if (TextUtils.isEmpty(pass)) {
                     edPass.setError("Пароль пустой");
                     return;
                 }
+
                 if (pass.length() < 6){
                     edPass.setError("Пароль должен быть больше 6-ти символов");
-                }
-                if (TextUtils.isEmpty(username)) {
-                    edLogin.setError("Имя пользователя пустое");
-                    return;
                 }
                 mAuth.signInWithEmailAndPassword(username, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Пользователь создан", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Пользователь успешно вошёл", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            finish();
                         } else {
-                            Toast.makeText(getApplicationContext(), "Ошибка " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "неверный email или пароль", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
