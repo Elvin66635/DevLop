@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 
 import com.google.android.material.navigation.NavigationView;
@@ -26,7 +27,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView = findViewById(R.id.nav_view);
 
         setSupportActionBar(toolbar);
-
+          getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle=new
                 ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else {
             super.onBackPressed();
         }
+        finish();
     }
 
     @Override

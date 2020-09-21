@@ -11,8 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ResetPassActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
+        <activity android:name=".RestorePassActivity"></activity>
         <activity
             android:name=".AuthorizationActivity"
             android:windowSoftInputMode="stateHidden">
@@ -25,8 +24,7 @@
         <activity android:name=".MainActivity"
             android:theme="@style/MainActivityTheme"></activity>
         <activity
-            android:name=".RegistrationActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:name=".RegistrationActivity" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -11,6 +11,7 @@
         <item name="android:actionBarStyle">@style/TransparentActionBar</item>
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
+
     </style>
 
     <style name="MainActivityTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -27,10 +28,6 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-    </style>
-    <style name="NavigationTheme" parent="AppTheme">
-        <item name="android:textSize">16sp</item>
-        <item name="android:layout_marginLeft">16dp</item>
     </style>
 
 

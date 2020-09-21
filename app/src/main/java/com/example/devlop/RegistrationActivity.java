@@ -2,11 +2,15 @@ package com.example.devlop;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +27,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.jaeger.library.StatusBarUtil;
 
 public class RegistrationActivity extends AppCompatActivity {
     private static final String TAG = "RegistrationActivity";
@@ -31,9 +36,7 @@ public class RegistrationActivity extends AppCompatActivity {
     ProgressBar progressBar;
     private FirebaseAuth mAuth;
     Toolbar toolbar;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +48,13 @@ public class RegistrationActivity extends AppCompatActivity {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-    private void initView() {
 
+    private void initView() {
+            StatusBarUtil.setTransparent(this);
+
+       /* getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);*/
         toolbar = findViewById(R.id.toolBarReg);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -73,7 +80,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     edPassReg.setError("Пароль пустой");
                     return;
                 }
-                if (pass.length() < 6){
+                if (pass.length() < 6) {
                     edPassReg.setError("Пароль должен быть больше 6-ти символов");
                 }
                 if (TextUtils.isEmpty(username)) {
@@ -102,13 +109,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        //    updateUI(currentUser);
-    }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -123,5 +124,12 @@ public class RegistrationActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

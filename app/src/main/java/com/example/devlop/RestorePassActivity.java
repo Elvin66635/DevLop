@@ -1,54 +1,59 @@
 package com.example.devlop;
 
-
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class ResetPassActivity extends Activity {
-    ImageButton backArrow;
+public class RestorePassActivity extends AppCompatActivity {
+    Toolbar toolbar;
     EditText edEmail;
     Button restoreBtn;
     private FirebaseAuth mAuth;
     ProgressDialog pd;
+    ProgressBar pb;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.reset_pass_activity);
-
+        setContentView(R.layout.activity_resetpass);
         mAuth = FirebaseAuth.getInstance();
-
-
         initView();
+
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void initView() {
+        getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        toolbar = findViewById(R.id.toolBarResetPass);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        edEmail = findViewById(R.id.edEmail);
+        edEmail = findViewById(R.id.edEmailResPass);
         restoreBtn = findViewById(R.id.restoreBtn);
         pd = new ProgressDialog(this);
+        pb = findViewById(R.id.pbResetPass);
 
 
         restoreBtn.setOnClickListener(new View.OnClickListener() {
@@ -56,21 +61,22 @@ public class ResetPassActivity extends Activity {
             public void onClick(View v) {
                 String email = edEmail.getText().toString();
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(ResetPassActivity.this, "Введите электронную почту", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RestorePassActivity.this, "Введите электронную почту", Toast.LENGTH_SHORT).show();
                 } else {
 
                     mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(ResetPassActivity.this, "Проверьте почту", Toast.LENGTH_LONG).show();
+                                Toast.makeText(RestorePassActivity.this, "Проверьте почту", Toast.LENGTH_LONG).show();
                                 pd.setMessage("Подождите");
-                                pd.show();
-                                startActivity(new Intent(ResetPassActivity.this, AuthorizationActivity.class));
+                           //     pd.show();
+                                pb.setVisibility(View.VISIBLE);
+                                startActivity(new Intent(RestorePassActivity.this, AuthorizationActivity.class));
                                 finish();
                             } else {
                                 String message = task.getException().getMessage();
-                                Toast.makeText(ResetPassActivity.this, "Произошла ошибка " + message, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RestorePassActivity.this, "Произошла ошибка " + message, Toast.LENGTH_SHORT).show();
 
                             }
                         }
@@ -95,5 +101,11 @@ public class ResetPassActivity extends Activity {
     public void onBackPressed() {
         super.onBackPressed();
         //  finish();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

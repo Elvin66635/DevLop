@@ -7,8 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,21 +21,53 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class AuthorizationActivity extends AppCompatActivity {
+    private static final String TAG = "AuthorizationActivity";
     TextView forgotPassTxt, signUpTxt;
     EditText edLogin, edPass;
     Button signInBtn;
     private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authorization);
+
         mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                }
+                // [START_EXCLUDE]
+                updateUI(user);
+                // [END_EXCLUDE]
+            }
+        };
         initView();
+        mAuth.signOut();
+    }
+    private void updateUI(FirebaseUser user) {
+        if (user != null) {
+            Log.d(TAG, "updateUI: user already auth " );
+
+        } else {
+
+        }
     }
 
     private void initView() {
+      /*  getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);*/
         forgotPassTxt = findViewById(R.id.forgotPasstxt);
         signUpTxt = findViewById(R.id.signUp);
         edLogin = findViewById(R.id.edLogin);
@@ -50,7 +84,7 @@ public class AuthorizationActivity extends AppCompatActivity {
         forgotPassTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),ResetPassActivity.class));
+                startActivity(new Intent(getApplicationContext(),RestorePassActivity.class));
             }
         });
         signInBtn.setOnClickListener(new View.OnClickListener() {
@@ -96,4 +130,18 @@ public class AuthorizationActivity extends AppCompatActivity {
         imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         return true;
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+
 }

@@ -7,6 +7,19 @@
     android:background="@drawable/bg_auth"
     tools:context=".AuthorizationActivity">
 
+    <ScrollView
+        android:background="@drawable/bg_auth_transparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+    <RelativeLayout
+        android:isScrollContainer="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
     <ImageView
         android:id="@+id/logo"
         android:layout_width="230dp"
@@ -18,7 +31,7 @@
     <EditText
         android:id="@+id/edLogin"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/logo"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="108dp"
@@ -34,7 +47,7 @@
         android:id="@+id/edPass"
         android:inputType="textPassword"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/edLogin"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="30dp"
@@ -96,4 +109,6 @@
         android:textColor="#fff"
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp" />
+</RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

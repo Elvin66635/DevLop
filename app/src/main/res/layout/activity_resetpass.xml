@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/reset_pass"
+    tools:context=".AuthorizationActivity">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_auth_transparent">
+
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolBarResetPass"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:theme="@style/TransparentActionBar" />
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="190dp"
+                android:layout_height="90dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="160dp"
+                android:src="@drawable/auth_logo" />
+
+
+            <TextView
+                android:id="@+id/text"
+                android:text="@string/reset_pass_text"
+                android:textColor="#DDDDDD"
+                android:gravity="center"
+                android:textSize="22dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/logo"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+            <EditText
+                android:id="@+id/edEmailResPass"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/text"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/shape_for_input_auth"
+                android:drawableLeft="@drawable/ic_email_black_24dp"
+                android:drawablePadding="10dp"
+                android:hint="@string/email"
+                android:paddingLeft="15dp"
+                android:singleLine="true" />
+
+
+            <Button
+                android:id="@+id/restoreBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edEmailResPass"
+                android:layout_marginTop="70dp"
+                android:background="@drawable/login_btn"
+                android:text="@string/restore"
+                android:textColor="#D01111"
+                android:textStyle="bold" />
+
+            <ProgressBar
+                android:id="@+id/pbResetPass"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:layout_below="@+id/edEmailResPass"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:visibility="invisible" />
+        </RelativeLayout>
+</RelativeLayout>
