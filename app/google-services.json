@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "427446451231",
+    "firebase_url": "https://devlop-5fa04.firebaseio.com",
+    "project_id": "devlop-5fa04",
+    "storage_bucket": "devlop-5fa04.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:427446451231:android:43a46b141b402c7eeee92a",
+        "android_client_info": {
+          "package_name": "com.example.devlop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "427446451231-q3kkiqa0seve1s9brjg7r8dd0gcst71b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA71NAUGOoSasmhlOyv9kj27cOdL9n4dJU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "427446451231-q3kkiqa0seve1s9brjg7r8dd0gcst71b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
