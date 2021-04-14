@@ -42,32 +42,29 @@ public class AuthorizationActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
+                    Log.d(TAG, "onAuthStateChanged111: " + user.toString());
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-                // [START_EXCLUDE]
                 updateUI(user);
-                // [END_EXCLUDE]
             }
         };
         initView();
-        mAuth.signOut();
+      //  mAuth.signOut();
     }
     private void updateUI(FirebaseUser user) {
         if (user != null) {
             Log.d(TAG, "updateUI: user already auth " );
-
+          //  startActivity(new Intent(getApplicationContext(), MainActivity.class));
         } else {
 
         }
     }
 
     private void initView() {
-      /*  getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);*/
+
         forgotPassTxt = findViewById(R.id.forgotPasstxt);
         signUpTxt = findViewById(R.id.signUp);
         edLogin = findViewById(R.id.edLogin);
@@ -144,4 +141,9 @@ public class AuthorizationActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

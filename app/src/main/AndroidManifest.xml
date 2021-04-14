@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".RestorePassActivity"></activity>
+        <activity android:name=".ProfileSettingsActivity"></activity>
         <activity
             android:name=".AuthorizationActivity"
             android:windowSoftInputMode="stateHidden">
@@ -21,10 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-            android:theme="@style/MainActivityTheme"></activity>
         <activity
-            android:name=".RegistrationActivity" />
+            android:name=".MainActivity"
+            android:theme="@style/MainActivityTheme">
+
+        </activity>
+        <activity android:name=".RegistrationActivity" />
     </application>
 
 </manifest>

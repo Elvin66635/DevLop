@@ -52,9 +52,6 @@ public class RegistrationActivity extends AppCompatActivity {
     private void initView() {
             StatusBarUtil.setTransparent(this);
 
-       /* getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);*/
         toolbar = findViewById(R.id.toolBarReg);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -68,8 +65,8 @@ public class RegistrationActivity extends AppCompatActivity {
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = edEmailReg.getText().toString().trim();
-                String pass = edPassReg.getText().toString().trim();
+                final String email = edEmailReg.getText().toString().trim();
+                final String pass = edPassReg.getText().toString().trim();
                 String username = edLoginReg.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
@@ -95,11 +92,13 @@ public class RegistrationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(RegistrationActivity.this, "Пользователь создан", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class)
+                                    .putExtra("email", email).putExtra("pass",pass));
                             finish();
                         } else {
                             Toast.makeText(RegistrationActivity.this, "Ошибка " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
+                        progressBar.setVisibility(View.GONE);
                     }
                 });
             }
@@ -131,5 +130,14 @@ public class RegistrationActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null){
+            startActivity(new Intent(this,MainActivity.class));
+        }
     }
 }

@@ -1,26 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view"
-
-    >
+    tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single" >
 
         <item
             android:id="@+id/nav_home"
             android:title="@string/menu_home"
-            android:checked="true"
-            />
+            android:checked="true"/>
         <item
             android:id="@+id/nav_lectures"
-            android:title="@string/menu_lectures"
-            />
-<!--        <item-->
-<!--            android:id="@+id/nav_sittings"-->
-<!--            android:title="@string/menu_sittings" />-->
-
+            android:title="@string/menu_lectures"/>
 
         <item
             android:id="@+id/nav_tours"
@@ -28,19 +19,13 @@
             <menu>
                 <item
                     android:id="@+id/nav_tours_sub1"
-                    android:title="@string/menu_walking_tours"
-                    />
+                    android:title="@string/menu_walking_tours"/>
 
                 <item
                     android:id="@+id/nav_tours_sub2"
-                    android:title="@string/menu_tours_institutions"
-                    />
+                    android:title="@string/menu_tours_institutions" />
             </menu>
         </item>
-
-
-
-
 
         <item
             android:id="@+id/nav_vr"
@@ -57,12 +42,10 @@
             </menu>
         </item>
 
-
-
-
-
-
+        <item
+            android:id="@+id/nav_settings"
+            android:title="@string/menu_sittings"
+            android:checked="false"/>
 
     </group>
-
 </menu>
