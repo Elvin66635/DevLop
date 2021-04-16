@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -76,11 +77,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         return false;
     }
-
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-
+        finish();
+        Log.d(TAG, "onBackPressed: ");
     }
 
     @Override

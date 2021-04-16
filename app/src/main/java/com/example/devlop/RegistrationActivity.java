@@ -65,9 +65,9 @@ public class RegistrationActivity extends AppCompatActivity {
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String email = edEmailReg.getText().toString().trim();
-                final String pass = edPassReg.getText().toString().trim();
-                String username = edLoginReg.getText().toString().trim();
+                String email = edEmailReg.getText().toString().trim();
+                String pass = edPassReg.getText().toString().trim();
+                final String username = edLoginReg.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
                     edEmailReg.setError("Email пустой");
@@ -93,8 +93,10 @@ public class RegistrationActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(RegistrationActivity.this, "Пользователь создан", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class)
-                                    .putExtra("email", email).putExtra("pass",pass));
-                            finish();
+                                    .putExtra("email", edLoginReg.getText().toString()));
+                            Log.d(TAG, "onComplete: " + edLoginReg.getText().toString() + " " + username);
+
+                           // finish();
                         } else {
                             Toast.makeText(RegistrationActivity.this, "Ошибка " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }

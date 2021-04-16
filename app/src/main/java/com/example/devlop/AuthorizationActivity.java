@@ -43,21 +43,23 @@ public class AuthorizationActivity extends AppCompatActivity {
                 if (user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged111: " + user.toString());
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                  //  startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
                 updateUI(user);
             }
+
         };
         initView();
-      //  mAuth.signOut();
     }
     private void updateUI(FirebaseUser user) {
         if (user != null) {
             Log.d(TAG, "updateUI: user already auth " );
-          //  startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            finish();
         } else {
 
         }
@@ -108,7 +110,7 @@ public class AuthorizationActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Пользователь успешно вошёл", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                            finish();
+                          //  finish();
                         } else {
                             Toast.makeText(getApplicationContext(), "неверный email или пароль", Toast.LENGTH_LONG).show();
                         }
