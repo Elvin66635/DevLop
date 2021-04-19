@@ -27,4 +27,5 @@
     <string name="registration">Регистрация</string>
     <string name="restore">Восстановить</string>
     <string name="home_second">Home Second</string>
+    <string name="date_of_birth">Дата Рождения:</string>
 </resources>

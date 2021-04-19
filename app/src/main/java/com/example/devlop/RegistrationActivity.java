@@ -2,6 +2,7 @@ package com.example.devlop;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -92,11 +93,15 @@ public class RegistrationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(RegistrationActivity.this, "Пользователь создан", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class)
-                                    .putExtra("email", edLoginReg.getText().toString()));
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             Log.d(TAG, "onComplete: " + edLoginReg.getText().toString() + " " + username);
+                            SharedPreferences sharedPreferences = getSharedPreferences("myPrefs",MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("loginSettings",edLoginReg.getText().toString());
+                            editor.putString("emailSettings",edEmailReg.getText().toString());
+                            editor.putString("passSettings",edPassReg.getText().toString());
+                            editor.apply();
 
-                           // finish();
                         } else {
                             Toast.makeText(RegistrationActivity.this, "Ошибка " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }

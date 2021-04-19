@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -49,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
 
+        /*Intent i = getIntent();
+        String login = i.getStringExtra("email");
+        Log.d(TAG, " Verification " + login);*/
 
         setSupportActionBar(toolbar);
         getWindow().setFlags(
@@ -87,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.nav_settings:
+
                 startActivity(new Intent(this, ProfileSettingsActivity.class));
                 break;
         }
