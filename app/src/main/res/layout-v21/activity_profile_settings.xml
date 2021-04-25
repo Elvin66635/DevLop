@@ -105,15 +105,19 @@
             android:layout_height="150dp"
             android:layout_marginTop="20dp" />
 
-        <Button
-            android:id="@+id/doneBtn"
-            android:background="@color/done_btn"
-            android:drawableTop="@drawable/ic_ok"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="match_parent"
-            android:paddingTop="2dp"
-            android:layout_height="62dp"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+    <Button
+        android:layout_gravity="bottom"
+        android:id="@+id/doneBtn"
+        android:background="@color/done_btn"
+        android:drawableTop="@drawable/ic_ok"
+        android:layout_width="match_parent"
+        android:paddingTop="2dp"
+        android:layout_height="63dp"/>
+    </LinearLayout>
 
 </RelativeLayout>

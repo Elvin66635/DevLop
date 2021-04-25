@@ -46,7 +46,9 @@ public class ProfileSettingsActivity extends AppCompatActivity {
     Button btnDone;
     CircleImageView imageView;
     Uri imageUri;
+    String login;
     private static final int PICK_IMAGE = 100;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,24 +66,21 @@ public class ProfileSettingsActivity extends AppCompatActivity {
             }
         });
 
-
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String mImageUri = preferences.getString("image", null);
 
         if (mImageUri != null) {
-           // Glide.with(this).load(mImageUri).into(imageView);
             imageView.setImageURI(Uri.parse(mImageUri));
             Glide.with(this).load(mImageUri).into(imageView);
             Log.d(TAG, "onCreate: " + mImageUri);
         } else {
-            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
         }
 
 
         getSharedSettings();
 
         SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", MODE_PRIVATE);
-        String login = sharedPreferences.getString("loginSettings", "");
+        login = sharedPreferences.getString("loginSettings", "");
         String email = sharedPreferences.getString("emailSettings", "");
         String pass = sharedPreferences.getString("passSettings", "");
 
@@ -95,12 +94,15 @@ public class ProfileSettingsActivity extends AppCompatActivity {
                 String date = picker.getDayOfMonth() + "/" + (picker.getMonth() + 1) + "/" + picker.getYear();
                 SharedPreferences sharedPreferences = getSharedPreferences("myPrefsSettings", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("name", login);
+                Log.d(TAG, "login: " + login);
                 editor.putString("date", date);
                 editor.putString("emailSettings", emailEd.getEditText().toString());
                 editor.putString("passSettings", passEd.getEditText().toString());
                 birthTxt.setText(date);
                 editor.apply();
-
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
             }
         });
 
@@ -115,6 +117,7 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         passEd.getEditText().setText(passGet);
         birthTxt.setText(date);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -137,14 +140,15 @@ public class ProfileSettingsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     public void imageSelect() {
         permissionsCheck();
         Intent intent;
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
             intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
             intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
-        }else{
+        } else {
             intent = new Intent(Intent.ACTION_GET_CONTENT);
         }
         intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
@@ -163,6 +167,7 @@ public class ProfileSettingsActivity extends AppCompatActivity {
             return;
         }
     }
+
     private void initView() {
         toolbar = findViewById(R.id.toolBarSettings);
         nameTxt = findViewById(R.id.txtNameSettings);

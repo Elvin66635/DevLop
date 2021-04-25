@@ -9,15 +9,21 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.bumptech.glide.Glide;
 import com.example.devlop.api.Client;
 import com.example.devlop.api.Service;
 import com.example.devlop.model.Data;
@@ -36,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    TextView nameText;
     private FirebaseAuth mAuth;
     private static final String TAG = "MainActivity";
 
@@ -45,14 +52,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
+        getData();
+    }
+
+    private void getData() {
+        nameText = findViewById(R.id.nameTxt);
 
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-
-        /*Intent i = getIntent();
-        String login = i.getStringExtra("email");
-        Log.d(TAG, " Verification " + login);*/
 
         setSupportActionBar(toolbar);
         getWindow().setFlags(
@@ -67,6 +75,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setCheckedItem(R.id.nav_home);
 
         //  getNewsFromApi();
+        View headView = navigationView.getHeaderView(0);
+        nameText = headView.findViewById(R.id.nameTxt);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String mImageUri = preferences.getString("image", null);
+
+        if (mImageUri != null) {
+            // Glide.with(this).load(mImageUri).into(imageView);
+
+            ImageView imageView = headView.findViewById(R.id.profileImage);
+            imageView.setImageURI(Uri.parse(mImageUri));
+            Glide.with(this).load(mImageUri).into(imageView);
+            Log.d(TAG, "onCreate: " + mImageUri);
+        } else {
+
+        }
+        SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", MODE_PRIVATE);
+        String login = sharedPreferences.getString("loginSettings", "");
+        nameText.setText(login);
     }
 
     @Override

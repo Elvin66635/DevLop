@@ -93,7 +93,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(RegistrationActivity.this, "Пользователь создан", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class).putExtra("name",edLoginReg.getText().toString()));
                             Log.d(TAG, "onComplete: " + edLoginReg.getText().toString() + " " + username);
                             SharedPreferences sharedPreferences = getSharedPreferences("myPrefs",MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
